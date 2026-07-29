@@ -1,0 +1,49 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                String           @id @default(cuid())
+  email             String           @unique
+  githubUsername    String?
+  githubAccessToken String?
+  leetcodeUsername  String?
+  habits            Habit[]
+  courseProgress    CourseProgress[]
+}
+
+model Habit {
+  id              String            @id @default(cuid())
+  userId          String
+  user            User              @relation(fields: [userId], references: [id])
+  name            String
+  targetFrequency Int               @default(1)
+  completions     HabitCompletion[]
+}
+
+model HabitCompletion {
+  id          String   @id @default(cuid())
+  habitId     String
+  habit       Habit    @relation(fields: [habitId], references: [id])
+  completedAt DateTime @default(now())
+}
+
+model CourseProgress {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  courseName  String
+  lessonName  String
+  completedAt DateTime @default(now())
+}

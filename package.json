@@ -1,0 +1,27 @@
+{
+  "name": "devsynq-backend",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch src/index.js",
+    "start": "node src/index.js",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:studio": "prisma studio"
+  },
+  "dependencies": {
+    "@apollo/server": "^4.11.0",
+    "@auth/express": "^0.12.2",
+    "@auth/prisma-adapter": "^2.7.4",
+    "@prisma/client": "^5.20.0",
+    "axios": "^1.7.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "graphql": "^16.9.0",
+    "graphql-tag": "^2.12.6"
+  },
+  "devDependencies": {
+    "prisma": "^5.20.0"
+  }
+}
