@@ -2,13 +2,15 @@
   "name": "devsynq-backend",
   "version": "1.0.0",
   "type": "module",
-  "scripts": {
-    "dev": "node --watch src/index.js",
-    "start": "node src/index.js",
-    "prisma:generate": "prisma generate",
-    "prisma:migrate": "prisma migrate dev",
-    "prisma:studio": "prisma studio"
-  },
+"scripts": {
+  "dev": "node --watch src/index.js",
+  "start": "node src/index.js",
+  "build": "prisma generate",
+  "prisma:generate": "prisma generate",
+  "prisma:migrate": "prisma migrate dev",
+  "prisma:studio": "prisma studio"
+}
+,
   "dependencies": {
     "@apollo/server": "^4.11.0",
     "@auth/express": "^0.12.2",
