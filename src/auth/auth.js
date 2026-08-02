@@ -65,9 +65,11 @@ export const authConfig = {
       return true;
     },
 
-    async redirect({ url, baseUrl }) {
-      return `${process.env.FRONTEND_URL}/setup`;
-    },
+async redirect({ url, baseUrl }) {
+  return url.startsWith(process.env.FRONTEND_URL)
+    ? url
+    : `${process.env.FRONTEND_URL}/setup`;
+},
   },
 
   secret: process.env.AUTH_SECRET,
