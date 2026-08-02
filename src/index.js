@@ -9,12 +9,15 @@ import { authHandler } from "./auth/auth.js";
 import { buildContext } from "./context/index.js";
 
 const app = express();
+app.set("trust proxy", true);
+
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: process.env.FRONTEND_URL,
     credentials: true,
   })
 );
+
 
 
 
